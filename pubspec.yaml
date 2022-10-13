@@ -38,12 +38,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   json_theme: ^4.0.1+4
   google_fonts: ^3.0.1
-  flutter_native_splash: ^2.2.11
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.10.0
+  flutter_native_splash: ^2.2.11
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -97,7 +97,8 @@ flutter:
 flutter_native_splash:
   color: "#FFFFFF"
   image: assets/splash.png
-  fullscreen: true
+  android: true
+  ios: true
 flutter_icons:
   android: true
   ios: true
