@@ -23,6 +23,27 @@ dev_dependencies:
   flutter_native_splash: ^2.2.11
   flutter_lints: ^2.0.0
 
+
+flutter_native_splash:
+  image: assets/splash.png
+  color: "#FFFFFF"
+  android: true
+  ios: true
+  windows: false
+  web: false
+flutter_icons:
+  image_path: "assets/icon.png"
+  android: true
+  ios: true
+  min_sdk_android: 21
+  adaptive_icon_foreground: "assets/iconHealthby.png"
+  adaptive_icon_background: "#FFFFFF"
+  web:
+    generate: false
+  windows:
+    generate: false
+
+
 flutter:
 
   uses-material-design: true
@@ -57,15 +78,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
-flutter_native_splash:
-  color: "#FFFFFF"
-  image: assets/splash.png
-  android: true
-  ios: true
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/icon.png"
-  adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/logo.png"
