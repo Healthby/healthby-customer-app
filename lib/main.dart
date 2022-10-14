@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthby/page/login/login.dart';
 
+import 'page/register/register.dart';
 import 'page/splash.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Healthby',
       theme: ThemeData(
-        // primaryColor: const Color(0xFF0061a4),
+        primaryColor: const Color(0xFF0061a4),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: Color(0xFF0061a4),
@@ -36,11 +37,12 @@ class MyApp extends StatelessWidget {
           onSecondary: Colors.white,
           error: Color(0xFFD32F2F),
           onError: Colors.white,
-          background: Color(0xFFFDFCFF),
+          background: Color(0xFFE7E9EB),
           onBackground: Color(0xFF1A1C1E),
-          surface: Color(0xFFFDFCFF),
+          surface: Color(0xFFE7E9EB),
           onSurface: Color(0xFF1A1C1E),
         ),
+        scaffoldBackgroundColor: const Color(0xFFE7E9EB),
         fontFamily: GoogleFonts.ibmPlexSansThai().fontFamily,
         textTheme: GoogleFonts.ibmPlexSansThaiTextTheme(const TextTheme(
           headline1: TextStyle(
@@ -80,6 +82,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: const LoginPage().nameRoute,
           page: () => const LoginPage(),
+        ),
+        GetPage(
+          name: const RegisterPage().nameRoute,
+          page: () => const RegisterPage(),
         )
       ],
     );

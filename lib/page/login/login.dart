@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../register/register.dart';
+
 class LoginPage extends StatefulWidget {
   final String nameRoute = '/login';
   const LoginPage({super.key});
@@ -98,7 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size(200, 45),
                     ),
-                    onPressed: () {},
+                    onPressed: () =>
+                        Get.toNamed(const RegisterPage().nameRoute),
                     child: const Text('REGISTER'),
                   )
                 ]),
