@@ -85,8 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                   //button login
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 10)),
+                      minimumSize: const Size(200, 45),
+                    ),
                     onPressed: () => submit(),
                     child: const Text('LOGIN'),
                   ),
@@ -96,8 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                   //button regis
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 10)),
+                      minimumSize: const Size(200, 45),
+                    ),
                     onPressed: () {},
                     child: const Text('REGISTER'),
                   )
