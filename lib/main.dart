@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthby/page/login/login.dart';
+
+import 'page/splash.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+    // DeviceOrientation.landscapeRight,
+    // DeviceOrientation.landscapeLeft,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -11,7 +24,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Healthby',
       theme: ThemeData(
         // primaryColor: const Color(0xFF0061a4),
@@ -49,66 +62,26 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(
               fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
           button: TextStyle(
-              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+              fontSize: 15, fontWeight: FontWeight.w500, letterSpacing: 1.25),
           caption: TextStyle(
               fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
           overline: TextStyle(
               fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
         )),
       ),
-      home: const MyHomePage(title: 'Healthby'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      initialRoute: const SplashPage().nameRoute,
+      defaultTransition: Transition.fadeIn,
+      getPages: [
+        GetPage(
+          name: const SplashPage().nameRoute,
+          page: () => const SplashPage(),
+          transition: Transition.fade,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        GetPage(
+          name: const LoginPage().nameRoute,
+          page: () => const LoginPage(),
+        )
+      ],
     );
   }
 }
