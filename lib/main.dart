@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(
               fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
           button: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
           caption: TextStyle(
               fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
           overline: TextStyle(
