@@ -1,19 +1,35 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../utils/phonenumber_input_formatter.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
   final String nameRoute = '/register';
-  RegisterPage({super.key});
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final keyForm = GlobalKey<FormState>();
 
   final usernameController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   final firstnameController = TextEditingController();
+
   final lastnameController = TextEditingController();
+
   final phoneController = TextEditingController();
+
+  final _picker = ImagePicker();
+
+  File? _photo;
 
   submit() {
     if (keyForm.currentState!.validate()) {}
@@ -49,29 +65,69 @@ class RegisterPage extends StatelessWidget {
               Center(
                 child: Stack(
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       backgroundColor: Colors.white,
-                      foregroundImage: AssetImage('assets/icon.png'),
+                      foregroundImage: _photo == null
+                          ? const AssetImage('assets/icon.png')
+                          : FileImage(_photo!) as ImageProvider,
                       radius: 90,
                     ),
                     Positioned(
                       bottom: 0,
                       right: 0,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Get.theme.colorScheme.secondary,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(100),
-                            ),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () async {
+                              XFile? photo = await _picker.pickImage(
+                                source: ImageSource.camera,
+                                preferredCameraDevice: CameraDevice.front,
+                              );
+                              if (photo != null) {
+                                setState(() {
+                                  _photo = File(photo.path);
+                                });
+                              }
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Get.theme.colorScheme.secondary,
+                                    borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        topLeft: Radius.circular(20))),
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  color: Get.theme.colorScheme.onSecondary,
+                                  size: 16,
+                                )),
                           ),
-                          padding: EdgeInsets.zero,
-                        ),
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.edit,
-                          color: Get.theme.colorScheme.onSecondary,
-                        ),
+                          GestureDetector(
+                            onTap: () async {
+                              XFile? photo = await _picker.pickImage(
+                                source: ImageSource.gallery,
+                                preferredCameraDevice: CameraDevice.front,
+                              );
+                              if (photo != null) {
+                                setState(() {
+                                  _photo = File(photo.path);
+                                });
+                              }
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                    color: Get.theme.colorScheme.secondary,
+                                    borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20))),
+                                child: Icon(
+                                  Icons.camera,
+                                  color: Get.theme.colorScheme.onSecondary,
+                                  size: 16,
+                                )),
+                          ),
+                        ],
                       ),
                     ),
                   ],
