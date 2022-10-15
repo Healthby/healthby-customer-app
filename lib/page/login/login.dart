@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   //username
                   TextFormField(
                     controller: usernameController,
-                    keyboardType: TextInputType.visiblePassword,
+                    keyboardType: TextInputType.name,
                     // textAlign: TextAlign.center,
                     decoration: const InputDecoration(
                       labelText: 'Username',
@@ -100,8 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size(200, 45),
                     ),
-                    onPressed: () =>
-                        Get.toNamed(const RegisterPage().nameRoute),
+                    onPressed: () => Get.toNamed(RegisterPage().nameRoute),
                     child: const Text('REGISTER'),
                   )
                 ]),

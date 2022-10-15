@@ -84,8 +84,8 @@ class MyApp extends StatelessWidget {
           page: () => const LoginPage(),
         ),
         GetPage(
-          name: const RegisterPage().nameRoute,
-          page: () => const RegisterPage(),
+          name: RegisterPage().nameRoute,
+          page: () => RegisterPage(),
         )
       ],
     );
